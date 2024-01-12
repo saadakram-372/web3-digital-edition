@@ -1,0 +1,31 @@
+.container {
+  padding-left: 10px;
+  background-color: #e0ded9;
+  min-height: 60px;
+  height: 60px;
+  line-height: 24px;
+  padding-top: 10px;
+}
+
+.edition-title span {
+  color: #777;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.edition-content {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  justify-content: space-evenly;
+  padding-bottom: 8%;
+}
+
+.no-file {
+  text-align: center;
+  margin-top: 20%;
+}
+
+.no-file span {
+  font-weight: bold;
+}

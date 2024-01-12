@@ -1,0 +1,1 @@
+export { EditionTranscriptionBody } from "./EditionTranscriptionBody";

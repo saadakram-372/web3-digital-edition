@@ -1,0 +1,22 @@
+.about-container {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  flex-direction: column;
+  display: flex;
+}
+
+.heading {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.about-text {
+  font-weight: 300;
+  font-style: italic;
+  font-size: small;
+}
