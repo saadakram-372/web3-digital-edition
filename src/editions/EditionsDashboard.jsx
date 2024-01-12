@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParseAndFetchFileData } from "../hooks/useParseAndFetchFileData";
 import { PageLayout } from "../components/page-layout/PageLayout";
 import { CheckBox } from "../components/checkbox";
-import { Section } from "../components/section/Section";
+import { Section } from "../components/section";
 import { ImageSlider } from "../components/image-slider";
 import { EditionTranscriptionBody } from "./components";
 import { EditionAboutBody } from "./components/EditionAboutBody";
