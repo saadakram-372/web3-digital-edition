@@ -25,6 +25,8 @@ export const EditionsDashboard = () => {
   const [htmlEditionBody, setHtmlEditionBody] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [errorFetching, setErrorFetching] = useState(false);
+  const [errorUploading, setErrorUploading] = useState(false);
+  const [teiHashid, setTeiHashid] = useState(null);
   const [shownSection, setShownSection] = useState([
     { status: true, title: "About", value: "about" },
     { status: true, title: "Facsimile", value: "facsimile" },
@@ -32,9 +34,12 @@ export const EditionsDashboard = () => {
   ]);
 
   useEffect(() => {
-    getObjectList();
+    if (teiHashid != null && isUploaded) {
+      getObjectList();
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [teiHashid, isUploaded]);
 
   useEffect(() => {
     if (Object.keys(fetchedContent).length && isUploaded) {
@@ -87,8 +92,16 @@ export const EditionsDashboard = () => {
     if (selectedFile) {
       setIsLoading(true);
       console.log(`Uploading file: ${selectedFile.name}`);
-      uploadObject(selectedFile);
-      setTimeout(() => setIsUploded(true), 5000);
+      uploadObject(selectedFile).then((hashid) => {
+        if (hashid != null) {
+          setTeiHashid(hashid.toString());
+          setIsUploded(true);
+          setErrorUploading(false);
+        } else {
+          setErrorUploading(true);
+          setIsUploded(false);
+        }
+      });
     } else {
       console.log("No file selected.");
       setIsLoading(false);
@@ -123,6 +136,10 @@ export const EditionsDashboard = () => {
                 />
               ))}
             </div>
+
+            {errorUploading ? (
+              <ErrorComponent message="Error Uploading XML document. Kindly, try again later!" />
+            ) : null}
 
             {errorFetching ? (
               <ErrorComponent message="Error Fetching and parsing XML document. Kindly, try again later!" />

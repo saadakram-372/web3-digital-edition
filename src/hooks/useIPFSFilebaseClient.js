@@ -36,11 +36,10 @@ export const useIPFSFilebaseClient = () => {
 
       const data = await request.promise();
       request.send();
-
-      return data.$response.requestId ? true : false;
+      return data.$response.httpResponse.headers["x-amz-meta-cid"];
     } catch (err) {
       console.log("Error uploading TEI files: ", err);
-      return false;
+      return null;
     }
   };
 
